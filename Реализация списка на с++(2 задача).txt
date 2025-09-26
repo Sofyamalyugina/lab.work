@@ -1,0 +1,44 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <cctype>  // для isalpha(), isdigit()
+
+int main() {
+    // Исходный список (вектор)
+    std::vector<std::string> original_list = {"a", "1", "b", "2", "c", "3"};
+    
+    // Списки для букв и чисел
+    std::vector<std::string> letters;
+    std::vector<std::string> numbers;
+    
+    // Разделяем элементы
+    for (const auto& element : original_list) {
+        if (element.length() == 1) {  // проверяем, что элемент - один символ
+            char c = element[0];
+            if (std::isalpha(c)) {
+                letters.push_back(element);  // добавляем в буквы
+            } else if (std::isdigit(c)) {
+                numbers.push_back(element);  // добавляем в числа
+            }
+        }
+    }
+    
+    // Удаляем исходный список
+    original_list.clear();  // очищаем содержимое
+    original_list.shrink_to_fit();  // освобождаем память
+    
+    // Выводим результаты
+    std::cout << "Буквы: ";
+    for (const auto& letter : letters) {
+        std::cout << letter << " ";
+    }
+    std::cout << std::endl;
+    
+    std::cout << "Числа: ";
+    for (const auto& number : numbers) {
+        std::cout << number << " ";
+    }
+    std::cout << std::endl;
+    
+    return 0;
+}
