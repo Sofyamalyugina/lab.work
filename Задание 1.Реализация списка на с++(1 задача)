@@ -1,0 +1,23 @@
+#include <iostream>
+#include <string>
+#include <cctype>  // для isupper(), islower()
+
+int main() {
+    std::string str = "AaBbCcDd";
+    std::string uppercase = "";  // для заглавных букв
+    std::string lowercase = "";  // для строчных букв
+    
+    // Проходим по всем символам строки
+    for (char c : str) {
+        if (std::isupper(c)) {
+            uppercase += c;  // добавляем заглавную букву
+        } else if (std::islower(c)) {
+            lowercase += c;  // добавляем строчную букву
+        }
+    }
+    
+    std::cout << "Заглавные буквы: " << uppercase << std::endl;
+    std::cout << "Строчные буквы: " << lowercase << std::endl;
+    
+    return 0;
+}
